@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="safe_box">
+
+<xacro:property name="box_height" value="0.02"/>
+<xacro:property name="box_width" value="0.8"/>
+<xacro:property name="box_length" value="1.5"/>
+
+    <xacro:macro name="safe_box" params="prefix parent width *origin">
+        <joint name="${prefix}line_origin_joint" type="fixed" >
+            <xacro:insert_block name="origin" />
+            <parent link="${parent}" />
+            <child link="${prefix}line" />
+        </joint>
+
+        <link name="${prefix}line">
+            <inertial>
+                <origin xyz="${width/2} ${box_length/2} ${box_height/2}" rpy="0 0 0"/>
+                <mass value="5.0"/>
+                <inertia ixx="0.442358" ixy="0" ixz="0" iyy="0.166085" iyz="0" izz="0.425124" />
+            </inertial>
+            <visual>
+                <origin xyz="${width/2} ${box_length/2} ${box_height/2}" rpy="0 0 0" />
+                <geometry>
+                    <!--mesh filename="package://tutorial_commons/meshes/box.stl"/-->
+					<box size="${width} ${box_length} ${box_height}" />
+                </geometry>
+                <material name="clear_color">
+                    <color rgba="0.5 0.5 0.5 0.1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="${width/2} ${box_length/2} ${box_height/2}" rpy="0 0 0" />
+                <geometry>
+                    <!--mesh filename="package://tutorial_commons/meshes/box.stl"/-->
+					<box size="${width} ${box_length} ${box_height}" />
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+</robot>

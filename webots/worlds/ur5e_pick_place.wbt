@@ -1,0 +1,97 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Simple Thymio II simulation controlled by a ROS node written in Python."
+  ]
+  title "UR5e PickPlace"
+  basicTimeStep 20
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      material2 "thymio body"
+      coulombFriction [
+        0.7
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.13648200601118252 -0.9608048622461337 -0.24130204872597252 3.961213493118876
+  position 4.072315385558756 3.3921370491763563 -5.174537335531077
+  follow "UR5e_robotiq"
+  followType "None"
+}
+UR5e {
+  hidden translation_1 0 0 0.163
+  hidden rotation_1 0 0 -1 1.570748437984597
+  hidden translation_2 0 0.138 0
+  hidden rotation_2 0 -1 0 0.16928754003998964
+  hidden translation_3 0 -0.131 0.425
+  hidden rotation_3 0 -1 0 1.5794081498140038
+  hidden translation_4 0 0 0.392
+  hidden rotation_4 0 0.9999999999999999 0 1.7443039570390104
+  hidden translation_5 0 0.127 0
+  hidden rotation_5 0 0 0.9999999999999999 1.5620758340319267
+  hidden translation_6 0 0 0.1
+  hidden rotation_6 0 1 0 7.318120924043451e-05
+  hidden translation_8 0.054905 0.030601 0
+  hidden rotation_8 0.9999999999999982 6.231698268521761e-08 -1.0793619423941987e-14 3.141593
+  hidden translation_10 0.054905 -0.030601 0
+  hidden rotation_10 0 0 1 0
+  hidden translation_12 0.06142 0.0127 0
+  hidden rotation_12 0.9979098043094128 -0.06462215148963707 1.119288643329754e-08 3.1415929992759346
+  hidden translation_13 0.04304 -0.037599 0
+  hidden rotation_13 0 0 -1 2.9802322387695313e-08
+  hidden translation_14 0.06142 -0.0127 0
+  hidden rotation_14 0 0 1 0.0005781147043466791
+  hidden translation_15 0.04304 -0.037599 0
+  hidden rotation_15 0 0 0.9999999999999999 8.326122458099395e-05
+  translation 0.14 0.75 0.5
+  name "UR5e_robotiq"
+  controller "<extern>"
+  toolSlot [
+    Robotiq85Gripper {
+      rotation 0 0 1 1.5708
+    }
+  ]
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3 3
+}
+SolidBox {
+  translation 0 0.375 0
+  size 0.96 0.75 1.5
+  appearance GalvanizedMetal {
+  }
+}
+SolidBox {
+  translation -2.7280072827222126e-18 0.7749693296191057 -4.12937563266492e-18
+  rotation 0.9346680322992387 0.3339653212474958 0.12191322160424675 -1.6391999309249963e-16
+  name "pick object"
+  size 0.05 0.05 0.05
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  physics Physics {
+  }
+}
+PlasticCrate {
+  translation -0.35 0.749754754226508 -0.15000000000000002
+  rotation -0.963285864544457 0.021945482811201435 0.26757940681790426 -5.8536623907971405e-16
+  name "plastic crate A"
+  size 0.1 0.06 0.1
+  mass 1
+}
+PlasticCrate {
+  translation 0.35 0.749754754226508 -0.15000000000000002
+  rotation -0.963285864544457 0.021945482811201435 0.26757940681790426 -5.8536623907971405e-16
+  name "plastic crate B"
+  size 0.1 0.06 0.1
+  mass 1
+}

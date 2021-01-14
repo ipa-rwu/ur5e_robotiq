@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="ur5e_robotiq" >
+
+	<xacro:arg name="sim" default="true"/>
+  <xacro:property name="sim" value="$(arg sim)"/>
+  
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+
+  <!-- ur5e -->
+  <!-- <xacro:property name="damping_value" value="10" />
+  <xacro:property name="friction_value" value="0.1" /> -->
+
+  <!-- ur5e -->
+  <xacro:include filename="$(find ur_e_description)/urdf/ur5e.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:ur5e_robot prefix="" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
+  />
+  
+  <!-- gripper -->
+   <xacro:include filename="$(find robotiq_85_description)/urdf/robotiq_85_gripper.urdf.xacro" />
+  
+  <!-- camera -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+
+  <!-- table -->
+  <!-- <xacro:property name="table_height" value="0.75"/>
+  <xacro:property name="table_width" value="0.8"/>
+  <xacro:property name="table_length" value="1.5"/> -->
+  <xacro:include filename="$(find ur5e_robotiq_gazebo)/urdf/table_ur.urdf.xacro" />
+
+  <xacro:include filename="$(find ur5e_robotiq_gazebo)/urdf/safe_box.urdf.xacro" />
+
+
+  <link name="world" />
+
+  	<!-- include platform -->
+	<xacro:table prefix="table_" parent="world">
+  	  <origin xyz="0 0 -0.375" rpy="0 0 0"/>
+	</xacro:table>
+
+  <joint name="table_platform_joint" type="fixed">
+    <parent link="table_platform_base" />
+    <child link = "base_link" />
+    <origin xyz="0.50 0.28 0.001" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <!-- <joint name="world_table" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0." rpy="0.0 0.0 0.0" />
+  </joint> -->
+
+  <xacro:robotiq_85_gripper prefix="" parent="wrist_3_link" >
+    <origin xyz="0 0.1 0" rpy="0 0 ${pi/2}"/>
+  </xacro:robotiq_85_gripper>
+
+  <!-- <xacro:kinect2_v0 name="" parent="world" >
+    <origin xyz="0.4 0.0 1.2" rpy="0.0 ${pi/2} 0.0" />
+  </xacro:kinect2_v0> -->
+
+  <xacro:arg name="use_nominal_extrinsics" default="True" />
+	<xacro:if value="${sim}">
+	  <xacro:sensor_d435 parent="world">
+	    <origin xyz="0.27 0.9 1.23" rpy="0 0 0"/>
+	  </xacro:sensor_d435>
+	</xacro:if>
+
+	<!-- include camera -->
+	<xacro:unless value="${sim}">
+	  <link name="camera_link"/>
+	  <joint name="camera_joint" type="fixed">
+		<parent link="table_platform_base"/>
+		<child link="camera_link"/>
+		<origin xyz="0.48 0 0.7" rpy="${pi/4} ${pi/2} ${pi/2}"/>
+	  </joint>
+	</xacro:unless>
+
+  <!-- include safe_box -->
+	<!-- <xacro:safe_box prefix="top_" parent="table_platform_base" width="0.8">
+  	  <origin xyz="0 0 0.8" rpy="0 0 0"/>
+	</xacro:safe_box> -->
+
+  <xacro:safe_box prefix="right_" parent="table_platform_base" width="0.76">
+  	  <origin xyz="0 0 0.78" rpy="0 ${pi/2} 0"/>
+	</xacro:safe_box>
+
+    <xacro:safe_box prefix="left_" parent="table_platform_base" width="0.76">
+  	  <origin xyz="0.96 0 0.78" rpy="0 ${pi/2} 0"/>
+	</xacro:safe_box>
+
+</robot>
