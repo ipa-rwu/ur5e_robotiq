@@ -1,0 +1,367 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Simple Thymio II simulation controlled by a ROS node written in Python."
+  ]
+  title "UR5e PickPlace"
+  basicTimeStep 20
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      material2 "thymio body"
+      coulombFriction [
+        0.7
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.049390089611003093 -0.9681711555396549 -0.24536754599829708 3.3005417662830014
+  position 0.999670275410329 3.646650237958253 -4.968541159152038
+  followType "None"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3 3
+}
+Solid {
+  translation 0 0.375 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "textures/metal_galvanized/metal_galvanized_base_color.jpg"
+          ]
+        }
+        roughnessMap ImageTexture {
+          url [
+            "textures/metal_galvanized/metal_galvanized_roughness.jpg"
+          ]
+        }
+        metalnessMap ImageTexture {
+          url [
+            "textures/metal_galvanized/metal_galvanized_metalness.jpg"
+          ]
+        }
+        normalMap ImageTexture {
+          url [
+            "textures/metal_galvanized/metal_galvanized_normal.jpg"
+          ]
+        }
+      }
+      geometry IndexedFaceSet {
+        coord Coordinate {
+          point [
+            -0.48 0.375 0.745
+            0.48 0.375 0.745
+            0.48 0.375 -0.745
+            -0.48 0.375 -0.745
+            -0.48 -0.375 -0.745
+            0.48 -0.375 -0.745
+            0.48 -0.375 0.745
+            -0.48 -0.375 0.745
+            -0.48 -0.375 0.745
+            0.48 -0.375 0.745
+            0.48 0.375 0.745
+            -0.48 0.375 0.745
+            0.48 -0.375 -0.745
+            -0.48 -0.375 -0.745
+            -0.48 0.375 -0.745
+            0.48 0.375 -0.745
+            -0.48 -0.375 -0.745
+            -0.48 -0.375 0.745
+            -0.48 0.375 0.745
+            -0.48 0.375 -0.745
+            0.48 -0.375 0.745
+            0.48 -0.375 -0.745
+            0.48 0.375 -0.745
+            0.48 0.375 0.745
+          ]
+        }
+        texCoord TextureCoordinate {
+          point [
+            0 0
+            0.64429530201342 0
+            0.64429530201342 1
+            0 1
+            0 0
+            0.64429530201342 0
+            0.64429530201342 1
+            0 1
+            0 0
+            0.64429530201342 0
+            0.64429530201342 0.50335570469799
+            0 0.50335570469799
+            0 0
+            0.64429530201342 0
+            0.64429530201342 0.50335570469799
+            0 0.50335570469799
+            0 0
+            1 0
+            1 0.50335570469799
+            0 0.50335570469799
+            0 0
+            1 0
+            1 0.50335570469799
+            0 0.50335570469799
+          ]
+        }
+        coordIndex [
+          0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+        ]
+        creaseAngle 1.5
+      }
+    }
+  ]
+  name "box"
+  model "box"
+  boundingObject Box {
+    size 0.96 0.75 1.49
+  }
+  locked TRUE
+}
+SolidBox {
+  translation -1.7863174735789658e-18 0.7749693438352069 -1.1045115001145406e-18
+  rotation 0.8165303336110119 -0.38960073163830006 -0.4260158262318327 1.8763635726882795e-16
+  name "pick object"
+  size 0.05 0.05 0.05
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    roughness 0.5
+    metalness 0
+  }
+  physics Physics {
+  }
+}
+Solid {
+  translation -0.47 1.45 0
+  rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          transparency 0.9
+        }
+      }
+      geometry IndexedFaceSet {
+        coord Coordinate {
+          point [
+            -0.72 0.025 0.7
+            0.72 0.025 0.7
+            0.72 0.025 -0.7
+            -0.72 0.025 -0.7
+            -0.72 -0.025 -0.7
+            0.72 -0.025 -0.7
+            0.72 -0.025 0.7
+            -0.72 -0.025 0.7
+            -0.72 -0.025 0.7
+            0.72 -0.025 0.7
+            0.72 0.025 0.7
+            -0.72 0.025 0.7
+            0.72 -0.025 -0.7
+            -0.72 -0.025 -0.7
+            -0.72 0.025 -0.7
+            0.72 0.025 -0.7
+            -0.72 -0.025 -0.7
+            -0.72 -0.025 0.7
+            -0.72 0.025 0.7
+            -0.72 0.025 -0.7
+            0.72 -0.025 0.7
+            0.72 -0.025 -0.7
+            0.72 0.025 -0.7
+            0.72 0.025 0.7
+          ]
+        }
+        texCoord TextureCoordinate {
+          point [
+            0 0
+            1 0
+            1 0.97222222222222
+            0 0.97222222222222
+            0 0
+            1 0
+            1 0.97222222222222
+            0 0.97222222222222
+            0 0
+            1 0
+            1 0.034722222222222
+            0 0.034722222222222
+            0 0
+            1 0
+            1 0.034722222222222
+            0 0.034722222222222
+            0 0
+            0.97222222222222 0
+            0.97222222222222 0.034722222222222
+            0 0.034722222222222
+            0 0
+            0.97222222222222 0
+            0.97222222222222 0.034722222222222
+            0 0.034722222222222
+          ]
+        }
+        coordIndex [
+          0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+        ]
+        creaseAngle 1.5
+      }
+    }
+  ]
+  name "cell right"
+  model "box"
+  boundingObject Box {
+    size 1.44 0.05 1.4
+  }
+  locked TRUE
+}
+Solid {
+  translation 0.47 1.45 0
+  rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          transparency 0.9
+        }
+      }
+      geometry IndexedFaceSet {
+        coord Coordinate {
+          point [
+            -0.72 0.025 0.7
+            0.72 0.025 0.7
+            0.72 0.025 -0.7
+            -0.72 0.025 -0.7
+            -0.72 -0.025 -0.7
+            0.72 -0.025 -0.7
+            0.72 -0.025 0.7
+            -0.72 -0.025 0.7
+            -0.72 -0.025 0.7
+            0.72 -0.025 0.7
+            0.72 0.025 0.7
+            -0.72 0.025 0.7
+            0.72 -0.025 -0.7
+            -0.72 -0.025 -0.7
+            -0.72 0.025 -0.7
+            0.72 0.025 -0.7
+            -0.72 -0.025 -0.7
+            -0.72 -0.025 0.7
+            -0.72 0.025 0.7
+            -0.72 0.025 -0.7
+            0.72 -0.025 0.7
+            0.72 -0.025 -0.7
+            0.72 0.025 -0.7
+            0.72 0.025 0.7
+          ]
+        }
+        texCoord TextureCoordinate {
+          point [
+            0 0
+            1 0
+            1 0.97222222222222
+            0 0.97222222222222
+            0 0
+            1 0
+            1 0.97222222222222
+            0 0.97222222222222
+            0 0
+            1 0
+            1 0.034722222222222
+            0 0.034722222222222
+            0 0
+            1 0
+            1 0.034722222222222
+            0 0.034722222222222
+            0 0
+            0.97222222222222 0
+            0.97222222222222 0.034722222222222
+            0 0.034722222222222
+            0 0
+            0.97222222222222 0
+            0.97222222222222 0.034722222222222
+            0 0.034722222222222
+          ]
+        }
+        coordIndex [
+          0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+        ]
+        creaseAngle 1.5
+      }
+    }
+  ]
+  name "cell left"
+  model "box"
+  boundingObject Box {
+    size 0.96 0.05 1.4
+  }
+  locked TRUE
+}
+Solid {
+  translation 0 1.47 0.745
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          transparency 0.9
+        }
+      }
+      geometry Box {
+        size 0.96 0.05 1.4
+      }
+      isPickable FALSE
+    }
+  ]
+  name "cell back"
+  model "box"
+}
+PlasticCrate {
+  translation -0.35 0.7497547506676351 -0.15
+  rotation -0.9131400590111888 -0.06518363347237678 0.4024007039710313 -4.0481347934438794e-16
+  name "plastic crate A"
+  size 0.1 0.06 0.1
+  mass 1
+}
+PlasticCrate {
+  translation 0.35 0.7497547506676351 -0.15
+  rotation -0.9131400590111888 -0.06518363347237678 0.4024007039710313 -4.0481347934438794e-16
+  name "plastic crate B"
+  size 0.1 0.06 0.1
+  mass 1
+}
+UR5e {
+  hidden translation_1 0 0 0.163
+  hidden rotation_1 0 0 -1 1.570728490146708
+  hidden translation_2 0 0.138 0
+  hidden rotation_2 0 -1 0 0.16917345249476282
+  hidden translation_3 0 -0.131 0.425
+  hidden rotation_3 0 -1 0 1.5793973724087538
+  hidden translation_4 0 0 0.392
+  hidden rotation_4 0 1 0 1.7443616636475472
+  hidden translation_5 0 0.127 0
+  hidden rotation_5 0 0 1 1.5620022424622644
+  hidden translation_6 0 0 0.1
+  hidden rotation_6 0 1 0 7.633006626163126e-05
+  hidden translation_8 0.054905 0.030601 0
+  hidden rotation_8 0.9800714757934366 -0.19864516690842035 3.440635665634593e-08 3.141592993096556
+  hidden translation_10 0.054905 -0.030601 0
+  hidden rotation_10 0 0 1 0.39995067183147437
+  hidden translation_12 0.06142 0.0127 0
+  hidden rotation_12 0.983227754915891 -0.1823819672090857 3.1589487472276354e-08 3.141592994189923
+  hidden translation_13 0.04304 -0.037599 0
+  hidden rotation_13 0 0 -1 0.26748134688828695
+  hidden translation_14 0.06142 -0.0127 0
+  hidden rotation_14 0 0 1 0.3518679985622686
+  hidden translation_15 0.04304 -0.037599 0
+  hidden rotation_15 0 0 -0.9999999999999999 0.3100565716588488
+  translation 0.08 0.75 0.545
+  controller "<extern>"
+  toolSlot [
+    Robotiq85Gripper {
+      rotation -2.3464099999870814e-06 -2.3464199999870813e-06 -0.9999999999944944 -1.5708053071795867
+    }
+  ]
+}

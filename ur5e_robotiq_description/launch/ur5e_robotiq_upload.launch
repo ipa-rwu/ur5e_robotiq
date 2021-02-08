@@ -6,13 +6,13 @@
   <arg name="kinematics_config" default="$(find ur5e_robotiq_description)/config/ur5_calibration.yaml"/>
 
   <param unless="$(arg limited)" name="robot_description" 
-  command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_robotiq.urdf.xacro' 
+  command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_robotiq_no_cell.urdf.xacro' 
   transmission_hw_interface:=$(arg transmission_hw_interface)
   kinematics_config:=$(arg kinematics_config)" 
   />
 
   <param if="$(arg limited)" name="robot_description" 
-    command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_robotiq_joint_limited.urdf.xacro'
+    command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_joint_limited_robot_robotiq.urdf.xacro'
       transmission_hw_interface:=$(arg transmission_hw_interface)
       kinematics_config:=$(arg kinematics_config)"
     />

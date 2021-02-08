@@ -45,10 +45,10 @@ if jointPrefix:
 robot = Robot()
 nodeName = arguments.nodeName + '/' if arguments.nodeName != 'ur_driver' else ''
 jointStatePublisher = JointStatePublisher(robot, jointPrefix, nodeName)
-trajectoryFollower = TrajectoryFollower(robot, jointStatePublisher, jointPrefix, nodeName)
+trajectoryFollower = TrajectoryFollower(robot, jointStatePublisher, jointPrefix, "/arm_controller")
 trajectoryFollower.start()
 
-trajectoryFollowergripper = TrajectoryFollowerGripper(robot, jointStatePublisher, jointPrefix)
+trajectoryFollowergripper = TrajectoryFollowerGripper(robot, jointStatePublisher, gripperjointPrefix)
 trajectoryFollowergripper.start()
 
 # we want to use simulation time for ROS

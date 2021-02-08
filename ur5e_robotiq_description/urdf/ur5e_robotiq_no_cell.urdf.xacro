@@ -58,17 +58,6 @@
 	<xacro:table prefix="table_" parent="world">
   	  <origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:table>
-
-  <!-- wall table -->
-	<xacro:cell_wall prefix="back_" parent="table_platform_base" cell_width="0.96">
-  	  <origin xyz="0 0 0.01" rpy="0 0 0"/>
-	</xacro:cell_wall>
-  	<xacro:cell_wall prefix="right_" parent="table_platform_base" cell_width="1.44">
-  	  <origin xyz="0.05 0.06 0.01" rpy="0 0 1.57"/>
-	</xacro:cell_wall>
-  	<xacro:cell_wall prefix="left_" parent="table_platform_base" cell_width="1.44">
-  	  <origin xyz="0.96 0.06 0.01" rpy="0 0 1.57"/>
-	</xacro:cell_wall>
   
   <!-- arm base and table -->
   <joint name="table_joint" type="fixed">

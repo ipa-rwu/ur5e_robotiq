@@ -36,7 +36,7 @@
 
   <!-- Sensors Functionality -->
   <include ns="move_group" file="$(find ur5e_robotiq_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
-    <arg name="moveit_sensor_manager" value="ur5e_robotiq" /> 
+    <arg name="moveit_sensor_manager" value="ur5e_robotiq" />
   </include>
 
   <!-- Start the actual move_group node/action server -->
@@ -50,16 +50,17 @@
 
     <!-- MoveGroup capabilities to load -->
     <param name="capabilities" value="move_group/MoveGroupCartesianPathService
-				      move_group/MoveGroupExecuteService
-				      move_group/MoveGroupKinematicsService
-				      move_group/MoveGroupMoveAction
-				      move_group/MoveGroupPickPlaceAction
-				      move_group/MoveGroupPlanService
-				      move_group/MoveGroupQueryPlannersService
-				      move_group/MoveGroupStateValidationService
-				      move_group/MoveGroupGetPlanningSceneService
-				      move_group/ClearOctomapService
-				      " />
+                        				      move_group/MoveGroupExecuteService
+                                      move_group/MoveGroupExecuteTrajectoryAction
+                                      move_group/MoveGroupKinematicsService
+                                      move_group/MoveGroupMoveAction
+                                      move_group/MoveGroupPlanService
+                                      move_group/MoveGroupQueryPlannersService
+                                      move_group/MoveGroupStateValidationService
+                                      move_group/MoveGroupGetPlanningSceneService
+                                      move_group/ClearOctomapService
+                                      " />
+                                      <!-- move_group/MoveGroupPickPlaceAction -->
 
     <!-- Publish the planning scene of the physical robot so that rviz plugin can know actual robot -->
     <param name="planning_scene_monitor/publish_planning_scene" value="$(arg publish_monitored_planning_scene)" />

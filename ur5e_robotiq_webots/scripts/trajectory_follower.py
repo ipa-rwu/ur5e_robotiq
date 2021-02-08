@@ -130,7 +130,7 @@ class TrajectoryFollower(object):
         self.goal_handle = None
         self.trajectory = None
         self.joint_goal_tolerances = [0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
-        self.server = actionlib.ActionServer(nodeName + "follow_joint_trajectory",
+        self.server = actionlib.ActionServer(nodeName + "/follow_joint_trajectory",
                                              FollowJointTrajectoryAction,
                                              self.on_goal, self.on_cancel, auto_start=False)
 

@@ -1,6 +1,6 @@
 controller_list:
 # arm_controller
-  - name: ""
+  - name: "arm_controller"
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     joints:
