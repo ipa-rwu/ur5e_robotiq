@@ -8,7 +8,7 @@
   
   <arg name="limited" default="false"/>
 
-  <arg name="webots" default="true"/>
+  <arg name="rviz" default="true"/>
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find ur5e_robotiq_moveit_config)/launch/planning_context.launch">
@@ -18,12 +18,12 @@
 
   <!-- If needed, broadcast static tf for robot root -->
   
-  <group unless="$(arg webots)">
+  <group if="$(arg rviz)">
     <!-- We do not have a robot connected, so publish fake joint states -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
       <param name="/use_gui" value="false"/> 
       <!-- start from home position -->
-        <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+      <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
       <rosparam file="$(find ur5e_egp50_moveit_config)/config/zeros.yaml"/>
     </node>
       
