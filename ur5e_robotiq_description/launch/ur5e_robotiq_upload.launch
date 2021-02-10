@@ -1,19 +1,25 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="limited" default="0" doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
   <!-- calibration file -->
   <arg name="kinematics_config" default="$(find ur5e_robotiq_description)/config/ur5_calibration.yaml"/>
 
-  <param unless="$(arg limited)" name="robot_description" 
+  <param if="$(eval arg('limited') == 0)" name="robot_description" 
   command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_robotiq_no_cell.urdf.xacro' 
   transmission_hw_interface:=$(arg transmission_hw_interface)
   kinematics_config:=$(arg kinematics_config)" 
   />
 
-  <param if="$(arg limited)" name="robot_description" 
+  <param if="$(eval arg('limited') == 1)" name="robot_description" 
     command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_joint_limited_robot_robotiq.urdf.xacro'
       transmission_hw_interface:=$(arg transmission_hw_interface)
       kinematics_config:=$(arg kinematics_config)"
     />
+
+  <param if="$(eval arg('limited') == 2)" name="robot_description" 
+    command="$(find xacro)/xacro --inorder '$(find ur5e_robotiq_description)/urdf/ur5e_joint_limited_robot_robotiq_half_cell.urdf.xacro'
+    transmission_hw_interface:=$(arg transmission_hw_interface)
+    kinematics_config:=$(arg kinematics_config)"
+  />
 </launch>

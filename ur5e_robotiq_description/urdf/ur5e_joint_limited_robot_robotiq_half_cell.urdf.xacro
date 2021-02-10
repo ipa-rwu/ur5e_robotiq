@@ -45,19 +45,9 @@
   <xacro:arg name="use_nominal_extrinsics" default="True" />
 	<xacro:if value="${sim}">
 	  <xacro:sensor_d435 parent="table_platform_base">
-	    <origin xyz="0.48 0.9 1.4" rpy="${pi/4} ${pi/2} 0"/>
+	    <origin xyz="0.48 0.9 1.4" rpy="${pi/2} ${pi/2} 0"/>
 	  </xacro:sensor_d435>
 	</xacro:if>
-
-	<!--camera world-->
-	<!-- <xacro:unless value="${sim}">
-	  <link name="camera_link"/>
-	  <joint name="camera_joint" type="fixed">
-		<parent link="world"/>
-		<child link="camera_link"/>
-		<origin xyz="0.27 0.9 1.5" rpy="${pi/4} ${pi/2} 0"/>
-	  </joint>
-	</xacro:unless> -->
 
   <!-- wall -->
   <xacro:include filename="$(find ur5e_robotiq_description)/urdf/cell_wall.urdf.xacro" />
@@ -74,9 +64,9 @@
   	<xacro:cell_wall prefix="right_" parent="table_platform_base" cell_width="1.44">
   	  <origin xyz="0.05 0.06 0.01" rpy="0 0 1.57"/>
 	</xacro:cell_wall>
-  	<xacro:cell_wall prefix="left_" parent="table_platform_base" cell_width="1.44">
+  	<!-- <xacro:cell_wall prefix="left_" parent="table_platform_base" cell_width="1.44">
   	  <origin xyz="0.96 0.06 0.01" rpy="0 0 1.57"/>
-	</xacro:cell_wall>
+	</xacro:cell_wall> -->
   
   <!-- arm base and table -->
   <joint name="table_joint" type="fixed">

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="limited" default="1" doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="prefix" default="" doc="Prefix to robot's joints' and links' names" />
   <arg name="auto-close" default="false" doc="Startup mode"/>
   <param name="prefix" value="$(arg prefix)" type="str" />
