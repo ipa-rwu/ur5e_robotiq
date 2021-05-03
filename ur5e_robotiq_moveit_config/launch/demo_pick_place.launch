@@ -24,7 +24,7 @@
       <param name="/use_gui" value="false"/> 
       <!-- start from home position -->
       <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
-      <rosparam file="$(find ur5e_egp50_moveit_config)/config/zeros.yaml"/>
+      <rosparam file="$(find ur5e_robotiq_moveit_config)/config/zeros.yaml"/>
     </node>
       
     <!-- Given the published joint states, publish tf for the robot links -->
