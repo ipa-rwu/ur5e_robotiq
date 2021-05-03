@@ -184,7 +184,7 @@ class TrajectoryFollowerGripper(object):
         # gripper_finger1_joint
         self.trajectory = JointTrajectory()
         self.trajectory.joint_names = self.prefixedJointNames
-        print 'init trajectory.joint_names:{}'.format(self.trajectory.joint_names)
+        print ('init trajectory.joint_names:{}'.format(self.trajectory.joint_names))
         
         self.trajectory.points = [JointTrajectoryPoint(
             positions=state.position if state else [0] * 1,

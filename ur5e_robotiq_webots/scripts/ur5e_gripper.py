@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # Copyright (c) 2021 Ruichao Wu
 
@@ -68,4 +68,4 @@ while robot.step(timestep) != -1 and not rospy.is_shutdown():
     msg.clock.secs = int(time)
     # round prevents precision issues that can cause problems with ROS timers
     msg.clock.nsecs = round(1000 * (time - msg.clock.secs)) * 1.0e+6
-    clockPublisher.publish(msg)
+    # clockPublisher.publish(msg)
